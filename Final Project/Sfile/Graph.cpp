@@ -257,46 +257,46 @@ int MainGraph() {
 			bfs(&graph, VisitGraph);
 			printf("\n");
 			break;
-			case 7: {
-				char v;
-				printf("请输入顶点: ");
-				scanf(" %c", &v);
-				int neighborIndex = FindFirstNeighbor(&graph, v);
-				if (neighborIndex != -1) {
-					printf("顶点 %c 的第一个邻接点是 %c\n", v, graph.vexs[neighborIndex]);
-				} else {
-					printf("顶点 %c 没有邻接点\n", v);
-				}
-				break;
+		case 7: {
+			char v;
+			printf("请输入顶点: ");
+			scanf(" %c", &v);
+			int neighborIndex = FindFirstNeighbor(&graph, v);
+			if (neighborIndex != -1) {
+				printf("顶点 %c 的第一个邻接点是 %c\n", v, graph.vexs[neighborIndex]);
+			} else {
+				printf("顶点 %c 没有邻接点\n", v);
 			}
-			case 8: {
-				char v, neighbor;
-				printf("请输入顶点和当前邻接点 (格式: 顶点 邻接点): ");
-				scanf(" %c %c", &v, &neighbor);
-				int nextNeighborIndex = FindNextNeighbor(&graph, v, neighbor);
-				if (nextNeighborIndex != -1) {
-					printf("顶点 %c 的下一个邻接点是 %c\n", v, graph.vexs[nextNeighborIndex]);
-				} else {
-					printf("顶点 %c 没有更多邻接点\n", v);
-				}
-				break;
+			break;
+		}
+		case 8: {
+			char v, neighbor;
+			printf("请输入顶点和当前邻接点 (格式: 顶点 邻接点): ");
+			scanf(" %c %c", &v, &neighbor);
+			int nextNeighborIndex = FindNextNeighbor(&graph, v, neighbor);
+			if (nextNeighborIndex != -1) {
+				printf("顶点 %c 的下一个邻接点是 %c\n", v, graph.vexs[nextNeighborIndex]);
+			} else {
+				printf("顶点 %c 没有更多邻接点\n", v);
 			}
-			case 9: {
-				char v;
-				printf("请输入顶点: ");
-				scanf(" %c", &v);
-				int outD = 0, inD = 0;
-				int degree = GetVertexDegree(&graph, v, &outD, &inD);
-				if (degree == -1) {
-					printf("错误: 顶点 %c 不存在！\n", v);
-				} else if (graph.type == UNDIRECTED_GRAPH || graph.type == UNDIRECTED_NETWORK) {
-					printf("顶点 %c 的度是 %d\n", v, degree);
-				} else {
-					printf("顶点 %c 的出度是 %d，入度是 %d\n", v, outD, inD);
-				}
-				break;
+			break;
+		}
+		case 9: {
+			char v;
+			printf("请输入顶点: ");
+			scanf(" %c", &v);
+			int outD = 0, inD = 0;
+			int degree = GetVertexDegree(&graph, v, &outD, &inD);
+			if (degree == -1) {
+				printf("错误: 顶点 %c 不存在！\n", v);
+			} else if (graph.type == UNDIRECTED_GRAPH || graph.type == UNDIRECTED_NETWORK) {
+				printf("顶点 %c 的度是 %d\n", v, degree);
+			} else {
+				printf("顶点 %c 的出度是 %d，入度是 %d\n", v, outD, inD);
 			}
-			case 10: 
+			break;
+		}
+		case 10: 
 			printf("程序退出！\n");
 			return 0;
 		}

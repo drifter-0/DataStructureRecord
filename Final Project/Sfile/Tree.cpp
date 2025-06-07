@@ -145,63 +145,63 @@ int MainTree() {
 			PostOrderTraverse(T, VisitTree);
 			printf("\n");
 			break;
-			case 3: {
-				printf("请输入要查找双亲的节点: ");
-				scanf(" %c", &input);
-				TNode *targetNode = FindNode(T, input);
-				if (targetNode) {
-					TNode *parent = FindParent(T, targetNode);
-					if (parent)
-						printf("节点 %c 的双亲是 %c\n", input, parent->data);
-					else
-						printf("节点 %c 无双亲\n", input);
-				} else {
-					printf("节点 %c 不存在\n", input);
-				}
-				break;
+		case 3: {
+			printf("请输入要查找双亲的节点: ");
+			scanf(" %c", &input);
+			TNode *targetNode = FindNode(T, input);
+			if (targetNode) {
+				TNode *parent = FindParent(T, targetNode);
+				if (parent)
+					printf("节点 %c 的双亲是 %c\n", input, parent->data);
+				else
+					printf("节点 %c 无双亲\n", input);
+			} else {
+				printf("节点 %c 不存在\n", input);
 			}
-			case 4: {
-				printf("请输入要查找兄弟的节点: ");
-				scanf(" %c", &input);
-				TNode *targetNode = FindNode(T, input);
-				if (targetNode) {
-					bool isLeft;
-					TNode *sibling = FindSibling(T, FindNode(T, input), &isLeft);
-					if (sibling)
-						printf("节点 %c 的%s兄弟是 %c\n", input, isLeft ? "左" : "右", sibling->data);
-					else
-						printf("节点 %c 无兄弟\n", input);
-					break;
-				} else {
-					printf("节点 %c 不存在\n", input);
-				}
+			break;
+		}
+		case 4: {
+			printf("请输入要查找兄弟的节点: ");
+			scanf(" %c", &input);
+			TNode *targetNode = FindNode(T, input);
+			if (targetNode) {
+				bool isLeft;
+				TNode *sibling = FindSibling(T, FindNode(T, input), &isLeft);
+				if (sibling)
+					printf("节点 %c 的%s兄弟是 %c\n", input, isLeft ? "左" : "右", sibling->data);
+				else
+					printf("节点 %c 无兄弟\n", input);
 				break;
+			} else {
+				printf("节点 %c 不存在\n", input);
 			}
-			case 5: {
-				printf("请输入要查找孩子的节点: ");
-				scanf(" %c", &input);
-				TNode *targetNode = FindNode(T, input);
+			break;
+		}
+		case 5: {
+			printf("请输入要查找孩子的节点: ");
+			scanf(" %c", &input);
+			TNode *targetNode = FindNode(T, input);
+			
+			if (targetNode) {
+				TNode *leftChild = FindChild(targetNode, true);
+				TNode *rightChild = FindChild(targetNode, false);
 				
-				if (targetNode) {
-					TNode *leftChild = FindChild(targetNode, true);
-					TNode *rightChild = FindChild(targetNode, false);
-					
-					if (leftChild) {
-						printf("节点 %c 的左孩子是 %c\n", input, leftChild->data);
-					} else {
-						printf("节点 %c 没有左孩子\n", input);
-					}
-					
-					if (rightChild) {
-						printf("节点 %c 的右孩子是 %c\n", input, rightChild->data);
-					} else {
-						printf("节点 %c 没有右孩子\n", input);
-					}
+				if (leftChild) {
+					printf("节点 %c 的左孩子是 %c\n", input, leftChild->data);
 				} else {
-					printf("节点 %c 不存在\n", input);
+					printf("节点 %c 没有左孩子\n", input);
 				}
-				break;
+				
+				if (rightChild) {
+					printf("节点 %c 的右孩子是 %c\n", input, rightChild->data);
+				} else {
+					printf("节点 %c 没有右孩子\n", input);
+				}
+			} else {
+				printf("节点 %c 不存在\n", input);
 			}
+			break;
+		}
 		case 6:
 			MainParser();
 			break;
