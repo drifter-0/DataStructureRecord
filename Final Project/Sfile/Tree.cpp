@@ -171,7 +171,6 @@ int MainTree() {
 					printf("节点 %c 的%s兄弟是 %c\n", input, isLeft ? "左" : "右", sibling->data);
 				else
 					printf("节点 %c 无兄弟\n", input);
-				break;
 			} else {
 				printf("节点 %c 不存在\n", input);
 			}
@@ -181,7 +180,6 @@ int MainTree() {
 			printf("请输入要查找孩子的节点: ");
 			scanf(" %c", &input);
 			TNode *targetNode = FindNode(T, input);
-			
 			if (targetNode) {
 				TNode *leftChild = FindChild(targetNode, true);
 				TNode *rightChild = FindChild(targetNode, false);
